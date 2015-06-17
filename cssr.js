@@ -7,9 +7,16 @@ function CSSR(cssobj)
     var cssstring = '';
     
     // Begins a css rule with given selector
-    function beginRule(selector)
+    function beginRule(selector, id)
     {
-        cssstring += '\n\t' + selector + '\n\t{\n';
+        if(id)
+        {
+            cssstring += '\n\t/*[' + id + ']*/\n\t' + selector + '\n\t{\n';
+        }
+        else
+        {
+            cssstring += '\n\t' + selector + '\n\t{\n';
+        }
     }
     
     // Writes a given css property and value
@@ -31,13 +38,24 @@ function CSSR(cssobj)
         {
             let selector = key;
             
-            beginRule(selector);
-            
+            if(cssobj[key].hasOwnProperty('id'))
+            {
+                var propertyid = cssobj[key]['id'];
+                beginRule(selector, propertyid);
+            }
+            else
+            {
+                beginRule(selector);   
+            }
+
             for(let property in cssobj[key])
             {
                 let value = cssobj[key][property];
                 
-                writeProperty(property, value);
+                if(property !== 'id')
+                {
+                    writeProperty(property, value);
+                }
             }
 
             endRule();

@@ -27,7 +27,8 @@
                     '#test1 > h1':
                     {
                         'color': 'blue',
-                        'font-weight': 'bold'
+                        'font-weight': 'bold',
+                        'id': 't1'
                     },
                     'table#test1_table tr:nth-child(2) td:first-child':
                     {
@@ -35,13 +36,15 @@
                     },
                     '.testspan':
                     {
-                        'background-color': 'red'
+                        'background-color': 'red',
+                        id: 't2'
                     }
                 }, 'mycss')
                 .writecss({ '#first': { 'color': 'yellow' } }, 'mycss1')
                 .writecss({ '#second': { 'color': 'green' } }, 'mycss2')
                 .writecss({ '#third': { 'color': 'blue' } }, 'mycss')
-                .writecss({ 'table#test1_table tr:last-child td:nth-child(3)': { 'font-weight': '600' } }, 'mycss3');
+                .writecss({ 'table#test1_table tr:last-child td:nth-child(3)': { 'font-weight': '600' } }, 'mycss3')
+                .writecss({ '#randomleft': { 'position': 'absolute', 'left': Math.floor(Math.random() * 300) + 'px' } }, 'mycss');
             });
         </script>
     </head>
@@ -67,6 +70,10 @@
             <span class = "testspan" id = "first">Span1</span>
             <span class = "testspan" id = "second">Span2</span>
             <span class = "testspan" id = "third">Span3</span>
+            
+            <div id = "randomleft" style = "width: 50px; height: 50px; background-color: black">
+                
+            </div>
         </div>
     </body>
 </html>
