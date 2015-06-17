@@ -7,7 +7,7 @@
         <script>
             $(document).ready(function()
             {
-                var cssr = new CSSR(
+                var cssr = new CSSR().writecss(
                 {
                     '*':
                     {
@@ -28,10 +28,19 @@
                     {
                         'color': 'blue',
                         'font-weight': 'bold'
+                    },
+                    'table#test1_table tr:last-child td:first-child':
+                    {
+                        'font-family': 'Tahoma, Arial'   
+                    },
+                    '.testspan':
+                    {
+                        'background-color': 'red'
                     }
-                });
-                
-                cssr.writecss();
+                }, 'mycss')
+                .writecss({ '#first': { 'color': 'yellow' } }, 'mycss')
+                .writecss({ '#second': { 'color': 'green' } }, 'mycss')
+                .writecss({ '#third': { 'color': 'blue' } }, 'mycss');
             });
         </script>
     </head>
@@ -49,9 +58,9 @@
                 </tr>
             </table>
             
-            <span class = "testspan">Span1</span>
-            <span class = "testspan">Span2</span>
-            <span class = "testspan">Span3</span>
+            <span class = "testspan" id = "first">Span1</span>
+            <span class = "testspan" id = "second">Span2</span>
+            <span class = "testspan" id = "third">Span3</span>
         </div>
     </body>
 </html>
