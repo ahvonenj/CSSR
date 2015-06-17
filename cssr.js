@@ -2,9 +2,12 @@
 
 function CSSR(cssobj)
 {
+    this.storecss = false;
+    
     var that = this;
     var $head = $('head');  
     var cssstring = '';
+    var cssstore = {};
     
     // Begins a css rule with given selector
     function beginRule(selector, id)
@@ -84,6 +87,9 @@ function CSSR(cssobj)
             $head.find('style#' + id).data('iscssr', true);
         }
         
+        if(this.storecss)
+            cssstore[id] = cssobj;
+
         cssstring = '';
         
         return this;
@@ -92,6 +98,12 @@ function CSSR(cssobj)
     this.removecss = function(id)
     {
         $head.find('#' + id).remove();   
+    }
+    
+    this.replacecss = function(id, newcss)
+    {
+        $head.find('#' + id).remove();
+        this.writecss(newcss, id)
     }
     
     return this;

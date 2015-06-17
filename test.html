@@ -44,7 +44,38 @@
                 .writecss({ '#second': { 'color': 'green' } }, 'mycss2')
                 .writecss({ '#third': { 'color': 'blue' } }, 'mycss')
                 .writecss({ 'table#test1_table tr:last-child td:nth-child(3)': { 'font-weight': '600' } }, 'mycss3')
-                .writecss({ '#randomleft': { 'position': 'absolute', 'left': Math.floor(Math.random() * 300) + 'px' } }, 'mycss');
+                .writecss({ '#randomleft': { 'position': 'absolute', 'left': Math.floor(Math.random() * 300) + 'px' } }, 'rl');
+                
+                setTimeout(function()
+                {
+                    cssr.replacecss('rl', 
+                    {
+                        '#randomleft':
+                        {
+                            'left': '500px',
+                            'top': '600px',
+                            'position': 'absolute',
+                            'background-color': 'crimson !important',
+                            'id': 'test1'
+                        }
+                    });
+                }, 3000);
+                
+                setTimeout(function()
+                {
+                    cssr.replacecss('rl', 
+                    {
+                        '#randomleft':
+                        {
+                            'left': '800px',
+                            'top': '200px',
+                            'position': 'absolute',
+                            'background-color': 'limegreen !important',
+                            'id': 'test2'
+                        }
+                    });
+                }, 4000);
+                
             });
         </script>
     </head>
