@@ -10,6 +10,7 @@ Makes writing CSS-styles with JavaScript in runtime easy.
 * Stylebatching - CSSR batches styles with the same id together, which saves unnecessary style tags
 * Style hotswapping (does not currently support old and new style differentiating, so you need to write the whole style again)
 * CSSR makes it easy to apply, for example, random values to CSS
+* Great choise if making small-ish DOM-based library, that includes, for example, HTML elements created in runtime which need to be styled 
 * [Monad patterned](https://en.wikipedia.org/wiki/Monad_%28functional_programming%29)
 
 ## Example usage
