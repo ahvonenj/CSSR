@@ -9,3 +9,36 @@ Makes writing CSS-styles with JavaScript in runtime easy.
 * Style identification - Applied styles can be tagged with an id for easy removal
 * Stylebatching - CSSR batches styles with the same id together, which saves unnecessary style tags
 * [Monad patterned](https://en.wikipedia.org/wiki/Monad_%28functional_programming%29)
+
+## Example usage
+
+```
+
+// Create new CSSR object
+var cssr = new CSSR();
+
+// (Optional) Create "styleobject"
+var styleobject = 
+{
+  '#whatever':
+  {
+    'position': 'absolute',
+    'top': '10px',
+    'left': '15%',
+    'font-family': 'Tahoma, Arial, Consolas',
+    'color': 'red'
+  },
+  '.something':
+  {
+    'margin-left': '12em'
+  },
+  'table#sometable tr:last-child td:nth-child(3) > h1':
+  {
+    'font-size': '5pt'
+  }
+}
+
+// Apply / write styleobject
+cssr.writecss(styleobject);
+
+```
