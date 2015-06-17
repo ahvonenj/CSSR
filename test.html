@@ -29,7 +29,7 @@
                         'color': 'blue',
                         'font-weight': 'bold'
                     },
-                    'table#test1_table tr:last-child td:first-child':
+                    'table#test1_table tr:nth-child(2) td:first-child':
                     {
                         'font-family': 'Tahoma, Arial'   
                     },
@@ -40,7 +40,8 @@
                 }, 'mycss')
                 .writecss({ '#first': { 'color': 'yellow' } }, 'mycss')
                 .writecss({ '#second': { 'color': 'green' } }, 'mycss')
-                .writecss({ '#third': { 'color': 'blue' } }, 'mycss');
+                .writecss({ '#third': { 'color': 'blue' } }, 'mycss')
+                .writecss({ 'table#test1_table tr:last-child td:nth-child(3)': { 'font-weight': '600' } }, 'mycss');
             });
         </script>
     </head>
@@ -55,6 +56,11 @@
                 </tr>
                 <tr>
                     <td>Test table cell</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
                 </tr>
             </table>
             
