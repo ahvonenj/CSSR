@@ -38,7 +38,10 @@ var styleobject =
   }
 }
 
-// Apply / write styleobject
-cssr.writecss(styleobject);
+// Apply / write styleobject and give it an id
+cssr.writecss(styleobject, 'somestyle');
+
+// Later remove by id
+cssr.removecss('somestyle');
 
 ```
