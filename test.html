@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <title>CSSR</title>
+        <script src = "jquery-2.1.4.min.js"></script>
+        <script src = "cssr.js"></script>
+        <script>
+            $(document).ready(function()
+            {
+                var cssr = new CSSR(
+                {
+                    '*':
+                    {
+                        'margin': '0',
+                        'padding': '0'
+                    },
+                    'body':
+                    {
+                        'width': '100%',
+                        'height': '100%'
+                    },
+                    '#test1':
+                    {
+                        'width': '100vw',
+                        'height': '100vh'
+                    },
+                    '#test1 > h1':
+                    {
+                        'color': 'blue',
+                        'font-weight': 'bold'
+                    }
+                });
+                
+                cssr.writecss();
+            });
+        </script>
+    </head>
+    <body>
+        <div id = "test1">
+           
+            <h1>Test header</h1>
+            
+            <table id = "test1_table">
+                <tr>
+                    <th>Test table header</th>
+                </tr>
+                <tr>
+                    <td>Test table cell</td>
+                </tr>
+            </table>
+            
+            <span class = "testspan">Span1</span>
+            <span class = "testspan">Span2</span>
+            <span class = "testspan">Span3</span>
+        </div>
+    </body>
+</html>
