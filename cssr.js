@@ -98,12 +98,16 @@ function CSSR(cssobj)
     this.removecss = function(id)
     {
         $head.find('#' + id).remove();   
+        
+        return this;
     }
     
     this.replacecss = function(id, newcss)
     {
         $head.find('#' + id).remove();
-        this.writecss(newcss, id)
+        this.writecss(newcss, id);
+        
+        return this;
     }
     
     return this;
