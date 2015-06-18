@@ -4,6 +4,16 @@
         <title>CSSR</title>
         <script src = "jquery-2.1.4.min.js"></script>
         <script src = "cssr.js"></script>
+        <style>
+            #ops
+            {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-family: Consolas, Arial;
+                font-size: 16pt;
+            }
+        </style>
         <script>
             $(document).ready(function()
             {
@@ -46,35 +56,30 @@
                 .writecss({ 'table#test1_table tr:last-child td:nth-child(3)': { 'font-weight': '600' } }, 'mycss3')
                 .writecss({ '#randomleft': { 'position': 'absolute', 'left': Math.floor(Math.random() * 300) + 'px' } }, 'rl');
                 
-                setTimeout(function()
-                {
-                    cssr.replacecss('rl', 
-                    {
-                        '#randomleft':
-                        {
-                            'left': '500px',
-                            'top': '600px',
-                            'position': 'absolute',
-                            'background-color': 'crimson !important',
-                            'id': 'test1'
-                        }
-                    });
-                }, 3000);
+                var ops = 0;
                 
-                setTimeout(function()
+                var v = setInterval(function()
                 {
                     cssr.replacecss('rl', 
                     {
                         '#randomleft':
                         {
-                            'left': '800px',
-                            'top': '200px',
-                            'position': 'absolute',
-                            'background-color': 'limegreen !important',
-                            'id': 'test2'
+                            'left': (Math.floor(Math.random() * 800) + 50) + 'px',
+                            'top': (Math.floor(Math.random() * 800) + 50) + 'px',
+                            'position': 'absolute'
                         }
                     });
-                }, 4000);
+                    
+                    ops++;
+                }, 0);
+                
+                var $ops = $('#ops');
+                
+                var timer = setInterval(function()
+                {
+                    $ops.text('Ops / sec: ' + ops); 
+                    ops = 0;
+                }, 1000);
                 
             });
         </script>
@@ -105,6 +110,8 @@
             <div id = "randomleft" style = "width: 50px; height: 50px; background-color: black">
                 
             </div>
+            
+            <p id = "ops"></p>
         </div>
     </body>
 </html>
